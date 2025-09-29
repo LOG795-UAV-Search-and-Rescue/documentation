@@ -1,13 +1,13 @@
 # Drone
 This document outlines the technologies pre-installed on the drone before the start of the research.
 
-### What is it?
+## What is it?
 The drone that is used in the research is ModalAI's [Starling 2 Max](https://www.modalai.com/products/starling-2-max) with an extra [Sierra Wireless EM9291 5G](https://www.sierrawireless.com/iot-modules/5g-modules/em9291/) chip from Qualcomm on board.
 
 It came with four batteries, the controller, a powersupply and the case.
 
-### Specifications
-#### Starling 2 Max
+## Specifications
+### Starling 2 Max
 The Starling 2 Max is VOXL 2-powered, NDAA-compliant development drone supercharged by VOXL SDK specifically designed for computer vision-based, long-range dead reckoning with a 500g payload capacity. Powered by Blue UAS Framework autopilot, VOXL 2, the Starling 2 Max weighs 500g and boasts an impressive 55 minutes of autonomous flight time.
 
 **Note:** there are performance issues with GPS on the current iteration of this design, an updated GPS is in development.
@@ -18,13 +18,13 @@ The Starling 2 Max is VOXL 2-powered, NDAA-compliant development drone superchar
  - 55+ minutes flight time
  - 500g additional payload capacity
 
-##### Powered by VOXL 2:
+#### Powered by VOXL 2:
  - VOXL 2 is powered by Qualcomm QRB5165: 8 cores up to 3.091GHz, 8GB LPDDR5 
  - Abundance of perception capabilities built into Starling 2 Max with dual Sony IMX412 and dual OnSemi AR0144 image sensors
  - Integrated flight controller on DSP with TDK ICM-42688 IMU and ICP-10111 Barometer
  - VOXL ESC Mini 4-in-1
 
-##### Software Features: 
+#### Software Features: 
  - Advanced Autonomy
      - Visual Inertial Odometry to navigate in GPS denied environments
      - TFLite Neural Networks run object classification, detection, and other models
@@ -42,53 +42,53 @@ The Starling 2 Max is VOXL 2-powered, NDAA-compliant development drone superchar
 For more information see the [product page](https://www.modalai.com/products/starling-2-max) on ModalAI's website.
 
 
-#### Sierra Wireless EM9291 5G
+### Sierra Wireless EM9291 5G
 **Optimized 5G NR performance for applications requiring Gibabit speed, the EM9291 module is part of the EM Series offering global 5G connectivity.**
 
 Designed in an M.2 form factor, the EM9291 is compatible with our EM9191 module for a simple upgrade path to get the latest standards compliance and bands, as well as the EM7690 module to help facilitate the migration and differentiation between 4G LTE and 5G.
 
 This 5G NR Sub-6 GHz embedded module delivers up to 3.5Gbps downlink speed and 900Mbps uplink speed. With automatic 4G and 3G fallback networks and integrated GNSS receiver (GPS, GLONASS, BeiDou, and Galileo satellite systems supported), the EM9291 is applicable to a wide range of IoT applications such as industrial routers, home gateways, industrial and consumer laptops, rugged tablet PCs, video surveillance and digital signage.
 
-##### 5G NR
+#### 5G NR
  - **Category:** 5G NR Sub-6  
  - **Frequency Bands:** n1, n2, n3, n5, n7, n8, n12, n13, n14, n18, n20, n25, n26, n28, n29, n30, n38, n40, n41, n48, n66, n70, n71, n75, n76, n77, n78, n79 
 
-##### 4G LTE
+#### 4G LTE
  - **Category:** Cat-20 
  - **Frequency Bands:** B1, B2, B3, B4, B5, B7, B8, B12, B13, B14, B18, B19, B20, B21, B25, B26, B28, B29, B30, B32, B34, B38, B39, B40, B41, B42, B43, B46, B48, B66, B71
 
-##### Data Speed
+#### Data Speed
  - **Peak Download Rate:** 3.5Gbps
  - **Peak Upload Rate:** 900Mbps 
 
-##### Location Services
+#### Location Services
  - **Satellite Systems:**  Galileo, Glonass, GPS, Beidou (Bands: L1 and L5) 
 
-##### Embedded Software
+#### Embedded Software
  - **Firmware:** Secure boot, Pre-certified firmware 
  - **System Drivers:** Windows® 10, Linux, Android RIL 
 
-##### Interfaces
+#### Interfaces
  - **USB:** USB 3.1 
  - **PCIe:** PCIe generation 3 (or 2), 1 lane
 
-##### Hardware
+#### Hardware
  - **Dimensions:** 30x52x2.38mm 
  - **Temperature Range:** -30°C / +70°C, -40°C / +85°C 
 
-##### Approvals
+#### Approvals
  - **Carrier:** AT&T (FirstNet), NTT Docomo, Softbank, T-Mobile, Telstra, Verizon 
  - **Regulatory:** FCC, GCF, IC, KCC, PTCRB, EU RED, JATE/Telec 
 
-##### Embedded Sim
+#### Embedded Sim
  - Onboard consumer eUICC (optional) 
 
  For more information see the [product page](https://www.sierrawireless.com/iot-modules/5g-modules/em9291/) on Sierra Wireless's website.
 
-#### VOXL 2
+### VOXL 2
 VOXL 2 is the next generation Blue UAS Framework integrated AI Companion Computer and Flight Controller powered by Qualcomm Flight™ RB5. VOXL 2 has a robust ecosystem of pre-integrated image sensor modules and modems.
 
-##### VOXL 2 Features
+#### VOXL 2 Features
 
  - 16 grams, 70x36mm SWAP-optimized design
  - Powered by Qualcomm® QRB5165: 8 cores up to 3.091 GHz, 8GB LPDDR5
@@ -96,14 +96,14 @@ VOXL 2 is the next generation Blue UAS Framework integrated AI Companion Compute
  - Integrated flight controller on DSP with TDK® ICM-42688 IMU and ICP-10111 Barometer
  - 5G, 4G/LTE, WiFi, Microhard add-on connectivity
 
-##### Software Features
+#### Software Features
 
  - PX4, ArduPilot, ROS 1/2, Ubuntu 18.04.5 LTS, OpenCV 4.4, MAVROS, MAVSDK
  - Open Source Linux kernel, cross-compilers
  - Docker build environment for CPU, GPU (OpenCL) and DSP (Hexagon SDK) heterogeneous computer vision and deep learning processing
 
 
-### System Information
+## System Information
 ```
 --------------------------------------------------------------------------------
 system-image: 1.8.02-M0054-14.1a-perf

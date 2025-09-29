@@ -1,17 +1,17 @@
 # VOXL 5G Setup
 This document outlines the process for setting up a **VOXL 2** with a **Sierra Wireless EM9291 5G modem**.
 
-#### 1. Initial Modem Setup 
+### 1. Initial Modem Setup 
 The VOXL 2 does not use standard Linux networking tools like ``nmcli`` for cellular modems. Instead, it uses a custom utility, ``voxl-modem``. 
 
-- **Access the VOXL 2:** Use ``adb shell`` or ``ssh`` to get a command-line interface on the VOXL 2. In our case connecting via ``ssh`` was easier.
+- **Access the VOXL 2:** Use ``adb shell`` or ``ssh`` to get a command-line interface on the VOXL.
 
     Run the following command to connect to via ``adb shell``:
     ``` Bash 
     adb shell 
     ```
-
-    For ``ssh``, the VOXL 2 should already have the hotspot activated out of the box. You need to connect to the hotspot for the ``ssh`` command. In our case the IP address of the VOXL 2 was ``192.168.8.1``. The default user of the VOXL 2 is as follows: 
+   **Note:** To connect via ``adb`` you must be connected with a usb cable to the drone.
+   For ``ssh``, the VOXL 2 should already have the hotspot activated out of the box. You need to connect to the hotspot for the ``ssh`` command. In our case the IP address of the VOXL 2 was ``192.168.8.1``. The default user of the VOXL 2 is as follows: 
     ``` JSON
     {
         "user": "root",
@@ -37,7 +37,7 @@ The VOXL 2 does not use standard Linux networking tools like ``nmcli`` for cellu
     We've found that sometimes the VOXL 2 doesn't reboot properly when rebooting from the shell. It's better to power it OFF and ON again to reboot it.
  
 
-#### 2. Verify Modem Connection 
+### 2. Verify Modem Connection 
 
 After the reboot, you must verify that the modem has successfully connected to the cellular network and obtained an IP address. 
 
@@ -65,5 +65,5 @@ After the reboot, you must verify that the modem has successfully connected to t
 
 You should now have a fully working 5G internet connection on your VOXL 2.
 
-### See Also
+## See Also
  - [VOXL Hotspot Passthrough Setup](VOXL-Hotspot-Passthrough-Setup.md) - Setup an internet connection for the client of the hotspot.

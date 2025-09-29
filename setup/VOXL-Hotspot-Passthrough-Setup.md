@@ -3,7 +3,7 @@ This document outlines the process for enabling internet access for clients conn
 
 ***Warning:** using the VOXL 2 as a router can cause it to use a lot of its battery if possible all messages to the internet should be minal.*
 
-#### 1. Enable Internet Sharing (NAT and DNS)
+### 1. Enable Internet Sharing (NAT and DNS)
 The modem's connection is private to the VOXL 2. To share it with clients on the Wi-Fi hotspot, you must enable **IP forwarding** and set up **NAT**.
 
  - **Enable IP Forwarding:** This allows the VOXL 2 to route traffic between its interfaces.
@@ -18,7 +18,7 @@ The modem's connection is private to the VOXL 2. To share it with clients on the
 
  - **Fix DNS Resolution:** It's possible for the clients not to have a DNS while on the hotspot. If the automatic DNS doesn't work then you must manually add one to the client.
 
-#### 2. Make Settings Persistent
+### 2. Make Settings Persistent
 
 The changes you made are temporary and will be lost on reboot. The most reliable way to make them permanent is with a ``systemd`` service.
 
@@ -67,5 +67,5 @@ The changes you made are temporary and will be lost on reboot. The most reliable
 
 You should now share with any devices connected to the VOXL 2 Wi-Fi hotspot the internet comming from the 5G modem.
 
-### See Also
+## See Also
  - [VOXL 5G Setup](VOXL-5G-Setup.md) - Setup a 5G network connection.

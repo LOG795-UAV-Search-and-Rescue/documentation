@@ -1,7 +1,8 @@
 # VOXL Hotspot Passthrough Setup
 This document outlines the process for enabling internet access for clients connected to the **VOXL 2** Wi-Fi hotspot.
 
-***Warning:** using the VOXL 2 as a router can cause it to use a lot of its battery if possible all messages to the internet should be minal.*
+> [!warning]
+> using the VOXL 2 as a router can cause it to use a lot of its battery if possible all messages to the internet should be minal.*
 
 ### 1. Enable Internet Sharing (NAT and DNS)
 The modem's connection is private to the VOXL 2. To share it with clients on the Wi-Fi hotspot, you must enable **IP forwarding** and set up **NAT**.

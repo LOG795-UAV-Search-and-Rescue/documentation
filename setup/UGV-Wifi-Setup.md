@@ -18,6 +18,8 @@ To connect to the `ETS_5G_Platform` Wi-Fi, simply run the following command in t
 sudo nmcli con up 5G-wifi
 ```
 
+If the IP address is not rotated, it should now be available through `192.168.0.43`.
+
 ### 2. Direct connection to the drone (VOXL) Wi-Fi
 
 To connect to the drone's Wi-Fi hotspot directly, you can run the following command in the UGV's terminal.
@@ -25,6 +27,8 @@ To connect to the drone's Wi-Fi hotspot directly, you can run the following comm
 ```shell
 sudo nmcli con up drone-wifi
 ```
+
+The IP of the UGV when on the drone's Wi-Fi is static and should be `192.168.8.2`.
 
 ## Adding a new `nmcli` Wi-Fi profile
 

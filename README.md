@@ -1,5 +1,17 @@
 # Documentation
-#### Table of Contents
+
+### Table of Correspondences
+| Name  | Correspondence |
+|:-----:| --------- |
+| Starling | Drone |
+| VOXL (2) | Computer on Drone |
+| UGV | Robot |
+| Jetson | Computer on Robot (Main Host) |
+| ESP32 | Computer on Robot (Sub Host)
+
+
+
+### Table of Contents
 
 - Material
     - [Drone](material/Drone.md)
@@ -7,3 +19,5 @@
     - [UGV Wi-Fi Setup](Setup/UGV-Wifi-Setup.md)
     - [VOXL 5G Setup](setup/VOXL-5G-Setup.md)
     - [VOXL Hotspot Passthrough Setup](setup/VOXL-Hotspot-Passthrough-Setup.md)
+- Software
+    - [UGV Sub-Controller (ESP32) JSON Command Set](software/UGV-Sub-Controller-Command-Set.md)

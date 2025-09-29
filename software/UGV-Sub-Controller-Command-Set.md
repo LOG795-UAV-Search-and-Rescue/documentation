@@ -1,4 +1,4 @@
-# Sub-controller JSON Command Set
+# UGV Sub-controller (ESP32) JSON Command Set
 The microcontroller is capable of receiving a wide variety of commands, and in this document, we will introduce these commands. 
 
 ## Composition of JSON Commands

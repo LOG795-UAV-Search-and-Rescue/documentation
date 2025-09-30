@@ -21,3 +21,4 @@
     - [VOXL Hotspot Passthrough Setup](setup/VOXL-Hotspot-Passthrough-Setup.md)
 - Software
     - [UGV Sub-Controller (ESP32) JSON Command Set](software/UGV-Sub-Controller-Command-Set.md)
+    - [UGV Firmware Install](software/UGV-Firmware-Install.md)

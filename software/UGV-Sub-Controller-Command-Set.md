@@ -327,8 +327,8 @@ Moves the Robotic Arm to Its Initial Position.
 {"T":104,"x":235,"y":0,"z":234,"t":3.14,"spd":0.25}
 ```
 Robotic Arm Coordinate Motion Control (Inverse Kinematics).
-
-### This function causes blocking.
+ > [!NOTE]
+ > This function causes blocking.
 
 #### CMD_XYZT_DIRECT_CTRL
 
@@ -336,8 +336,8 @@ Robotic Arm Coordinate Motion Control (Inverse Kinematics).
 {"T":1041,"x":235,"y":0,"z":234,"t":3.14}
 ```
 Robotic Arm Coordinate Motion Control (Inverse Kinematics).
-
-### This function does not cause blocking.
+ > [!NOTE]
+ > This function does not cause blocking.
 
 #### CMD_SERVO_RAD_FEEDBACK
 

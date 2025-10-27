@@ -485,6 +485,14 @@ Scans the current task files.
 ```JSON
 {"T":201,"name":"file.txt","content":"inputContentHere."}
 ```
+Exemple:
+``` JSON
+{
+  "T": 201,
+  "name": "patrol.txt",
+  "content": "[{\"T\":1, \"L\":0.3, \"R\":0.3}, {\"T\":500, \"delay\":2000}, {\"T\":1, \"L\":-0.3, \"R\":0.3}, {\"T\":500, \"delay\":1500}, {\"T\":1, \"L\":0, \"R\":0}]"
+}
+```
 Creates a new task file.
 
 #### CMD_READ_FILE

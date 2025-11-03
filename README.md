@@ -22,3 +22,4 @@
 - Software
     - [UGV Sub-Controller (ESP32) JSON Command Set](software/UGV-Sub-Controller-Command-Set.md)
     - [UGV Firmware Install](software/UGV-Firmware-Install.md)
+    - - [Drone Localization & VIO Streaming Guide](https://github.com/LOG795-UAV-Search-and-Rescue/drone-code/blob/Location/README.md)

@@ -12,7 +12,7 @@ These commands are fundamental to the mobile robot and are used for motion-relat
 Each command below includes three parts: an example, a brief introduction, and a detailed description. 
 
 #### CMD_SPEED_CTRL
-```JSON
+```json
 {"T":1,"L":0.5,"R":0.5}
 ```
 Sets the target linear velocity for both wheels (velocity closed-loop control).
@@ -20,7 +20,7 @@ Sets the target linear velocity for both wheels (velocity closed-loop control).
  > ``L`` and ``R`` represent the target linear velocities for the left and right wheels, respectively, in m/s. Negative values indicate reverse rotation and 0 means stop. The range of target linear velocities depends on the motors/reducers/wheel diameters used in the product, and the relevant calculation formulas can be found in the open-source microcontroller routine. It's important to note that for chassis using brushed DC motors, when the given target velocity's absolute value is very small (but not 0), the motor's poor low-speed performance may cause significant speed fluctuations during movement.
 
 #### CMD_PWM_INPUT
-```JSON
+```json
 {"T":11,"L":164,"R":164}
 ```
 Sets the PWM value for both drive wheels (velocity open-loop control).
@@ -29,7 +29,7 @@ Sets the PWM value for both drive wheels (velocity open-loop control).
 
 #### CMD_ROS_CTRL
 
-```JSON
+```json
 {"T":13,"X":0.1,"Z":0.3}
 ```
 ROS control (velocity closed-loop control).
@@ -38,7 +38,7 @@ ROS control (velocity closed-loop control).
 
 #### CMD_SET_MOTOR_PID
 
-```JSON
+```json
 {"T":2,"P":20,"I":2000,"D":0,"L":255}
 ```
 PID controller settings.
@@ -51,7 +51,7 @@ The product comes with an OLED display, which communicates with the ESP32 module
 
 #### CMD_OLED_CTRL
 
-```JSON
+```json
 {"T":3,"lineNum":0,"Text":"putYourTextHere"}
 ```
 Controls the display of custom content on the screen.
@@ -60,7 +60,7 @@ Controls the display of custom content on the screen.
 
 #### CMD_OLED_DEFAULT
 
-```JSON
+```json
 {"T":-3}
 ```
 Controls the display to show the default startup screen.
@@ -73,7 +73,7 @@ The mobile chassis can be equipped with different types of modules (none/mechani
 
 #### CMD_MODULE_TYPE
 
-```JSON
+```json
 {"T":4,"cmd":0}
 ```
 Sets the module type.
@@ -86,7 +86,7 @@ The chassis is equipped with an IMU sensor. You can use the following commands t
 
 #### CMD_GET_IMU_DATA
 
-```JSON
+```json
 {"T":126}
 ```
 Retrieves IMU data.
@@ -95,7 +95,7 @@ Retrieves IMU data.
 
 #### CMD_CALI_IMU_STEP
 
-```JSON
+```json
 {"T":127}
 ```
 IMU calibration (reserved interface).
@@ -104,7 +104,7 @@ IMU calibration (reserved interface).
 
 #### CMD_GET_IMU_OFFSET
 
-```JSON
+```json
 {"T":128}
 ```
 Retrieves current IMU offsets (reserved interface).
@@ -113,7 +113,7 @@ Retrieves current IMU offsets (reserved interface).
 
 #### CMD_SET_IMU_OFFSET
 
-```JSON
+```json
 {"T":129,"x":-12,"y":0,"z":0}
 ```
 Sets the IMU offsets (reserved interface).
@@ -123,16 +123,40 @@ Sets the IMU offsets (reserved interface).
 ### Chassis Information Feedback
 #### CMD_BASE_FEEDBACK
 
-```JSON
+```json
 {"T":130}
 ```
-Chassis information feedback.
+
+Chassis information feedback. Here is the format of the returned values:
+
+```json
+{"T":1001,"L":0,"R":0,"gx":0.0,"gy":0.0,"gz":0.0,"ax":0.0,"ay":0.0,"az":0.0,"mx":0.0,"my":0.0,"mz":0.0,"odl":0.0,"odr":0.0,"v":0.0}
+```
+
+| Param   | Description                                  |
+| ------- | -------------------------------------------- |
+| `"T"`   | Type of message                              |
+| `"L"`   | Left power to the wheels                     |
+| `"R"`   | Right power to the wheels                    |
+| `"gx"`  | Gyro angular velocity on `x` axis            |
+| `"gy"`  | Gyro angular velocity on `y` axis            |
+| `"gz"`  | Gyro angular velocity on `z` axis            |
+| `"ax"`  | Linear velocity on `x` axis                  |
+| `"ay"`  | Linear velocity on `y` axis                  |
+| `"az"`  | Linear velocity on `z` axis                  |
+| `"mx"`  | Magnet reading on `x` axis                   |
+| `"my"`  | Magnet reading on `y` axis                   |
+| `"mz"`  | Magnet reading on `z` axis                   |
+| `"odr"` | Odometre on right wheel (distance travelled) |
+| `"odl"` | Odometre on left wheel (distance travelled)  |
+| `"v"`   | Voltage of the battery                       |
+
  > [!NOTE]
  > After the product is powered on, chassis information feedback is typically enabled by default and occurs automatically. If the continuous feedback function for chassis information is disabled, and there's a need to obtain information about the chassis at a single instance, this command can be used to acquire basic chassis data.
 
 #### CMD_BASE_FEEDBACK_FLOW
 
-```JSON
+```json
 {"T":131,"cmd":1}
 ```
 Continuous chassis information feedback.
@@ -141,7 +165,7 @@ Continuous chassis information feedback.
 
 #### CMD_FEEDBACK_FLOW_INTERVAL
 
-```JSON
+```json
 {"T":142,"cmd":0}
 ```
 Sets the interval for continuous feedback.
@@ -150,7 +174,7 @@ Sets the interval for continuous feedback.
 
 #### CMD_UART_ECHO_MODE
 
-```JSON
+```json
 {"T":143,"cmd":0}
 ```
 Sets the command echo mode.
@@ -160,7 +184,7 @@ Sets the command echo mode.
 ### WIFI Configuration
 #### CMD_WIFI_ON_BOOT
 
-```JSON
+```json
 {"T":401,"cmd":3}
 ```
 Set WiFi Mode at Boot.
@@ -169,49 +193,49 @@ Set WiFi Mode at Boot.
 
 #### CMD_SET_AP
 
-```JSON
+```json
 {"T":402,"ssid":"UGV","password":"12345678"}
 ```
 Configure SSID and Password for AP Mode (ESP32 as a Hotspot).
 
 #### CMD_SET_STA
 
-```JSON
+```json
 {"T":403,"ssid":"WIFI_NAME","password":"WIFI_PASSWORD"}
 ```
 Configure SSID and Password for STA Mode (ESP32 connects to a known hotspot).
 
 #### CMD_WIFI_APSTA
 
-```JSON
+```json
 {"T":404,"ap_ssid":"UGV","ap_password":"12345678","sta_ssid":"WIFI_NAME","sta_password":"WIFI_PASSWORD"}
 ```
 Set Names and Passwords for AP and STA Modes (AP+STA Mode).
 
 #### CMD_WIFI_INFO
 
-```JSON
+```json
 {"T":405}
 ```
 Get Current WiFi Information.
 
 #### CMD_WIFI_CONFIG_CREATE_BY_STATUS
 
-```JSON
+```json
 {"T":406}
 ```
 Create a New WiFi Configuration File Using Current Settings.
 
 #### CMD_WIFI_CONFIG_CREATE_BY_INPUT
 
-```JSON
+```json
 {"T":407,"mode":3,"ap_ssid":"UGV","ap_password":"12345678","sta_ssid":"WIFI_NAME","sta_password":"WIFI_PASSWORD"}
 ```
 Create a New WiFi Configuration File Using Input Settings.
 
 #### CMD_WIFI_STOP
 
-```JSON
+```json
 {"T":408}
 ```
 Disconnect WiFi Connection.
@@ -219,7 +243,7 @@ Disconnect WiFi Connection.
 ### 12V Switch and Gimbal Settings
 #### CMD_LED_CTRL
 
-```JSON
+```json
 {"T":132,"IO4":255,"IO5":255}
 ```
 12V Switch Output Settings.
@@ -228,7 +252,7 @@ Disconnect WiFi Connection.
 
 #### CMD_GIMBAL_CTRL_SIMPLE
 
-```JSON
+```json
 {"T":133,"X":0,"Y":0,"SPD":0,"ACC":0}
 ```
 Basic Gimbal Control Command.
@@ -237,7 +261,7 @@ Basic Gimbal Control Command.
 
 #### CMD_GIMBAL_CTRL_MOVE
 
-```JSON
+```json
 {"T":134,"X":45,"Y":45,"SX":300,"SY":300}
 ```
 Continuous Gimbal Control Command.
@@ -246,7 +270,7 @@ Continuous Gimbal Control Command.
 
 #### CMD_GIMBAL_CTRL_STOP
 
-```JSON
+```json
 {"T":135}
 ```
 Pan-tilt Stop Command.
@@ -255,7 +279,7 @@ Pan-tilt Stop Command.
 
 #### CMD_GIMBAL_STEADY
 
-```JSON
+```json
 {"T":137,"s":0,"y":0}
 ```
 Pan-tilt Stabilization Feature.
@@ -264,7 +288,7 @@ Pan-tilt Stabilization Feature.
 
 #### CMD_GIMBAL_USER_CTRL
 
-```JSON
+```json
 {"T":141,"X":0,"Y":0,"SPD":300}
 ```
 Pan-tilt UI Control.
@@ -274,7 +298,7 @@ Pan-tilt UI Control.
 ### Robotic Arm Control
 #### CMD_MOVE_INIT
 
-```JSON
+```json
 {"T":100}
 ```
 Moves the Robotic Arm to Its Initial Position.
@@ -283,7 +307,7 @@ Moves the Robotic Arm to Its Initial Position.
 
 #### CMD_SINGLE_JOINT_CTRL
 
-```JSON
+```json
 {"T":101,"joint":0,"rad":0,"spd":0,"acc":10}
 ```
 **Single Joint Motion Control:**
@@ -302,7 +326,7 @@ Moves the Robotic Arm to Its Initial Position.
 
 #### CMD_JOINTS_RAD_CTRL
 
-```JSON
+```json
 {"T":102,"base":0,"shoulder":0,"elbow":1.57,"hand":1.57,"spd":0,"acc":10}
 ```
 **Full Joint Rotation Control in Radians:**
@@ -315,7 +339,7 @@ Moves the Robotic Arm to Its Initial Position.
 
 #### CMD_SINGLE_AXIS_CTRL
 
-```JSON
+```json
 {"T":103,"axis":2,"pos":0,"spd":0.25}
 ```
 **Single Axis Coordinate Control:**
@@ -323,7 +347,7 @@ Moves the Robotic Arm to Its Initial Position.
 
 #### CMD_XYZT_GOAL_CTRL
 
-```JSON
+```json
 {"T":104,"x":235,"y":0,"z":234,"t":3.14,"spd":0.25}
 ```
 Robotic Arm Coordinate Motion Control (Inverse Kinematics).
@@ -332,7 +356,7 @@ Robotic Arm Coordinate Motion Control (Inverse Kinematics).
 
 #### CMD_XYZT_DIRECT_CTRL
 
-```JSON
+```json
 {"T":1041,"x":235,"y":0,"z":234,"t":3.14}
 ```
 Robotic Arm Coordinate Motion Control (Inverse Kinematics).
@@ -341,14 +365,14 @@ Robotic Arm Coordinate Motion Control (Inverse Kinematics).
 
 #### CMD_SERVO_RAD_FEEDBACK
 
-```JSON
+```json
 {"T":105}
 ```
 Provides feedback on the robotic arm's coordinates.
 
 #### CMD_EOAT_HAND_CTRL
 
-```JSON
+```json
 {"T":106,"cmd":1.57,"spd":0,"acc":0}
 ```
 **End-of-Arm Tool Control in Radians:**
@@ -360,7 +384,7 @@ Provides feedback on the robotic arm's coordinates.
 
 #### CMD_EOAT_GRAB_TORQUE
 
-```JSON
+```json
 {"T":107,"tor":200}
 ```
 Clamp Force Control.
@@ -369,28 +393,28 @@ Clamp Force Control.
 
 #### CMD_SET_JOINT_PID
 
-```JSON
+```json
 {"T":108,"joint":3,"p":16,"i":0}
 ```
 Joint PID Settings.
 
 #### CMD_RESET_PID
 
-```JSON
+```json
 {"T":109}
 ```
 Resets Joint PID Settings.
 
 #### CMD_SET_NEW_X
 
-```JSON
+```json
 {"T":110,"xAxisAngle":0}
 ```
 Sets a New Direction for the X Axis.
 
 #### CMD_DYNAMIC_ADAPTATION
 
-```JSON
+```json
 {"T":112,"mode":0,"b":1000,"s":1000,"e":1000,"h":1000}
 ```
 Dynamic External Force Adaptation Control.
@@ -398,7 +422,7 @@ Dynamic External Force Adaptation Control.
 ### Other Settings
 #### CMD_HEART_BEAT_SET
 
-```JSON
+```json
 {"T":136,"cmd":3000}
 ```
 Sets the Heartbeat Function Interval.
@@ -407,7 +431,7 @@ Sets the Heartbeat Function Interval.
 
 #### CMD_SET_SPD_RATE
 
-```JSON
+```json
 {"T":138,"L":1,"R":1}
 ```
 Sets the Speed Ratio for Left and Right.
@@ -416,7 +440,7 @@ Sets the Speed Ratio for Left and Right.
 
 #### CMD_GET_SPD_RATE
 
-```JSON
+```json
 {"T":139}
 ```
 Retrieves the Current Speed Ratio settings.
@@ -424,10 +448,10 @@ Retrieves the Current Speed Ratio settings.
 ### ESP-NOW Related Settings
 #### CMD_BROADCAST_FOLLOWER
 
-```JSON
+```json
 {"T":300,"mode":1}
 ```
-```JSON
+```json
 {"T":300,"mode":0,"mac":"CC:DB:A7:5B:E4:1C"}
 ```
 Sets the mode for ESP-NOW broadcast control.
@@ -436,35 +460,35 @@ Sets the mode for ESP-NOW broadcast control.
 
 #### CMD_GET_MAC_ADDRESS
 
-```JSON
+```json
 {"T":302}
 ```
 Retrieves the current device's MAC address.
 
 #### CMD_ESP_NOW_ADD_FOLLOWER
 
-```JSON
+```json
 {"T":303,"mac":"FF:FF:FF:FF:FF:FF"}
 ```
 Adds a MAC address to the controlled device (PEER).
 
 #### CMD_ESP_NOW_REMOVE_FOLLOWER
 
-```JSON
+```json
 {"T":304,"mac":"FF:FF:FF:FF:FF:FF"}
 ```
 Removes a MAC address from the PEER.
 
 #### CMD_ESP_NOW_GROUP_CTRL
 
-```JSON
+```json
 {"T":305,"dev":0,"b":0,"s":0,"e":1.57,"h":1.57,"cmd":0,"megs":"hello!"}
 ```
 ESP-NOW group control.
 
 #### CMD_ESP_NOW_SINGLE
 
-```JSON
+```json
 {"T":306,"mac":"FF:FF:FF:FF:FF:FF","dev":0,"b":0,"s":0,"e":1.57,"h":1.57,"cmd":0,"megs":"hello!"}
 ```
 ESP-NOW unicast/group control.
@@ -475,18 +499,18 @@ This functionality belongs to the advanced features of the microcontroller and i
 
 #### CMD_SCAN_FILES
 
-```JSON
+```json
 {"T":200}
 ```
 Scans the current task files.
 
 #### CMD_CREATE_FILE
 
-```JSON
+```json
 {"T":201,"name":"file.txt","content":"inputContentHere."}
 ```
 Exemple:
-``` JSON
+``` json
 {
   "T": 201,
   "name": "patrol.txt",
@@ -497,35 +521,35 @@ Creates a new task file.
 
 #### CMD_READ_FILE
 
-```JSON
+```json
 {"T":202,"name":"file.txt"}
 ```
 Reads a task file.
 
 #### CMD_DELETE_FILE
 
-```JSON
+```json
 {"T":203,"name":"file.txt"}
 ```
 Deletes a task file.
 
 #### CMD_APPEND_LINE
 
-```JSON
+```json
 {"T":204,"name":"file.txt","content":"inputContentHere."}
 ```
 Adds a new instruction at the end of a task file.
 
 #### CMD_INSERT_LINE
 
-```JSON
+```json
 {"T":205,"name":"file.txt","lineNum":3,"content":"content"}
 ```
 Insert a new instruction in the middle of a task file.
 
 #### CMD_REPLACE_LINE
 
-```JSON
+```json
 {"T":206,"name":"file.txt","lineNum":3,"content":"Content"}
 ```
 Replaces an instruction in a task file.
@@ -533,7 +557,7 @@ Replaces an instruction in a task file.
 ### Servo Settings
 #### CMD_SET_SERVO_ID
 
-```JSON
+```json
 {"T":501,"raw":1,"new":11}
 ```
 Changes the servo ID.
@@ -542,14 +566,14 @@ Changes the servo ID.
 
 #### CMD_SET_MIDDLE
 
-```JSON
+```json
 {"T":502,"id":11}
 ```
 Sets the current position of the servo as the middle position (only valid for ST series servos).
 
 #### CMD_SET_SERVO_PID
 
-```JSON
+```json
 {"T":503,"id":14,"p":16}
 ```
 Sets the P value of the servo's PID.
@@ -557,42 +581,42 @@ Sets the P value of the servo's PID.
 ### ESP32 Related Features
 #### CMD_REBOOT
 
-```JSON
+```json
 {"T":600}
 ```
 Reboot the ESP32.
 
 #### CMD_FREE_FLASH_SPACE
 
-```JSON
+```json
 {"T":601}
 ```
 Retrieves the remaining space size in the FLASH memory.
 
 #### CMD_BOOT_MISSION_INFO
 
-``` JSON
+``` json
 {"T":602}
 ```
 Outputs the current boot mission file.
 
 #### CMD_RESET_BOOT_MISSION
 
-``` JSON
+``` json
 {"T":603}
 ```
 Resets the boot mission file to its default or a predetermined state.
 
 #### CMD_NVS_CLEAR
 
-``` JSON
+``` json
 {"T":604}
 ```
 Clears the ESP32's Non-Volatile Storage (NVS) area. This command can be useful if there are issues with establishing a WiFi connection. It's recommended to reboot the ESP32 after executing this command.
 
 #### CMD_INFO_PRINT
 
-``` JSON
+``` json
 {"T":605,"cmd":1}
 ```
 Sets the mode for information feedback.

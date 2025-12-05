@@ -1,4 +1,8 @@
 <style>
+    table {
+      margin-bottom: 1em;
+    }
+    
     th {
         text-align: left;
         background-color: #f0f0f0ff;
@@ -11,7 +15,8 @@
         background-color: #B9DAFF; 
         padding: 10px; 
         border-radius: 5px;
-        margin-bottom: 1em
+        margin-bottom: 1em;
+        margin-top: 1em;
     }
 </style>
 
@@ -37,13 +42,13 @@
 ℹ️ <strong>Incident summary:</strong> On the 3rd of december 2025, at approximatly 13h07, during a flight demonstration of our application, we lost communication to the drone indoors causing it to gain altitude uncontrollably. With no way to stop it, the drone hit the ceiling after which it came crashing down from about 30 feet in the air. Because of that, we lost the propellers, the feet, the 5G antenna and the battery clips due to breakage. Luckily, none of the computational chips were damaged severely. 
 </div>
 
-| Instruction | Report |
-| ----------- | ------ |
-| **Leadup**      | We started preping for a test flight at around 10h30, figuring how the drone would fly and adding some black tape to the ground to help the drone stabilies using the camera captors. At around 12h00, we setup the drone to fly with indoors flight configurations. With a bit of confidence from the test flights, we started to prepare for a demonstration of our application, which is to give directive to a rover using the drone as a source. To ensure the functionnality we tested with the drone in our hands, the rover was properly following the drone. We set out to make a full demonstration at around 13h06, at first the drone was flying fine but it started deviating from our controler inputs at which point the incident happend. |
-| **Fault**       | The drone moved on its own and didn't respond to controller input. |
-| **Timeline**    | 10h30: Prep phase<br/>12h00: Test flights (no issues)<br/>13h06: Start of demonstration, rover follows drone from the ground.<br/>13h07: Drone crashes|
-| **Root cause**  | After revewing the logs that we got from the QGroundControl WebApp we found a single RTL activation which was at the start of the incident. We strongly believe that the automatic activation of the RTL caused the unexpected behavior of the drone. |
-| **Damage**      | Shattered propellers, exploded feet, antenna ripped out of the feet, battery clip split in pieces |
+| Instruction    | Report                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Leadup**     | We started preping for a test flight at around 10h30, figuring how the drone would fly and adding some black tape to the ground to help the drone stabilies using the camera captors. At around 12h00, we setup the drone to fly with indoors flight configurations. With a bit of confidence from the test flights, we started to prepare for a demonstration of our application, which is to give directive to a rover using the drone as a source. To ensure the functionnality we tested with the drone in our hands, the rover was properly following the drone. We set out to make a full demonstration at around 13h06, at first the drone was flying fine but it started deviating from our controler inputs at which point the incident happend. |
+| **Fault**      | The drone moved on its own and didn't respond to controller input.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **Timeline**   | 10h30: Prep phase<br/>12h00: Test flights (no issues)<br/>13h06: Start of demonstration, rover follows drone from the ground.<br/>13h07: Drone crashes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **Root cause** | After revewing the logs that we got from the QGroundControl WebApp we found a single RTL activation which was at the start of the incident. We strongly believe that the automatic activation of the RTL caused the unexpected behavior of the drone.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Damage**     | Shattered propellers, exploded feet, antenna ripped out of the feet, battery clip split in pieces                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 
 ## Annex
